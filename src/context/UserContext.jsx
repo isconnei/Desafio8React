@@ -67,10 +67,8 @@ export const UserProvider = ({ children }) => {
       console.log("Registro exitoso:", response.data);
     } catch (error) {
       if (error.response) {
-        // Errores retornados por el servidor
         console.error("Error del servidor:", error.response.data.error);
       } else {
-        // Otros errores (problemas de red, etc.)
         console.error("Error:", error.message);
       }
     }
