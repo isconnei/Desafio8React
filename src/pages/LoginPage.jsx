@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
+  const { login } = useContext(UserContext);
 
   const validarInput = (event) => {
     event.preventDefault();
@@ -44,7 +47,11 @@ export default function LoginPage() {
             onChange={(e) => setPass(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => login(email, password)}
+        >
           Inicias sesión
         </button>
       </form>
