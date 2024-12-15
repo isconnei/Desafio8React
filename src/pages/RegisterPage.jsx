@@ -1,9 +1,15 @@
 import { useState } from "react";
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [password, setPass] = useState("");
   const [password2, setPass2] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const { register } = useContext(UserContext);
 
   const validarInput = (event) => {
     event.preventDefault();
@@ -24,6 +30,11 @@ export default function Register() {
       return;
     }
     alert("Formulario enviado correctamente");
+  };
+
+  const handleRegister = () => {
+    register(email, password);
+    navigate("/login");
   };
 
   return (
@@ -69,7 +80,11 @@ export default function Register() {
             onChange={(e) => setPass2(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleRegister}
+        >
           Registrar cuenta
         </button>
       </form>

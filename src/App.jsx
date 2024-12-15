@@ -12,8 +12,9 @@ import UserContext from "./context/UserContext";
 import { useContext } from "react";
 
 function App() {
-  const { token } = useContext(UserContext);
+  const { token, mail } = useContext(UserContext);
   console.log(token);
+  console.log(mail);
   return (
     <>
       <Navbar />
